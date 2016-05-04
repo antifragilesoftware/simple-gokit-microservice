@@ -10,7 +10,7 @@ import (
 
 func AddServices() {
 	ctx := context.Background()
-	svc := helloWorldService{}
+	svc := microservice{}
 
 	helloWorldHandler := httptransport.NewServer(
 		ctx,
@@ -22,7 +22,7 @@ func AddServices() {
 	http.Handle("/", helloWorldHandler)
 }
 
-func makeHelloWorldEndpoint(svc HelloWorldService) endpoint.Endpoint {
+func makeHelloWorldEndpoint(svc Microservice) endpoint.Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
 		v, err := svc.HelloWorld()
 		if err != nil {
